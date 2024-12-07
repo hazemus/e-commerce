@@ -7,6 +7,8 @@
     {{ form_widget(form.price,{'attr':{'class':'form form-control'}}) }}
 <label for="">Product Sub Categories</label>
     {{ form_widget(form.subCategories,{'attr':{'class':'form form-control'}}) }}<br>
-    <button class="btn btn-outline-primary btn-block">{{ button_label|default('Save') }}</button>
+<label for="">Product Image</label>
+    {{ form_widget(form.image,{'attr':{'class':'form'}}) }}<br>
+<br> <button class="btn btn-outline-primary btn-block">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
 
