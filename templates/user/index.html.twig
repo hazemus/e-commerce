@@ -41,7 +41,7 @@
                         {% else %}
                             <a onclick="return confirm('Do you want to remove editor role ?')" class="btn btn-danger" href="{{ path('app_user_remove_editor_role',{'id':user.id}) }}">Remove editor role</a>
                         {% endif %}
-                    <a href="" class="btn btn-danger">Delete</a>
+                    <a onclick="return confirm('Do you want to user  ?')" href="{{ path('app_user_remove',{'id':user.id}) }}" class="btn btn-danger">Delete</a>
                     {% endif %}
                 </td>
             </tr>
