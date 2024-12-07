@@ -37,5 +37,14 @@ class UserController extends AbstractController
         $this->addFlash('danger','Role editor was removed to your user');
         return $this->redirectToRoute('app_user');
     }
+    #[Route('/admin/user/{id}/remove/', name: 'app_user_remove_editor_role')]
+    public function userRemove(EntityManagerInterface $entityManager,$id,UserRepository $userRepository):Response
+    {
+        $user->setRoles([]);
+        $entityManager->flush();
+
+        $this->addFlash('danger','Role editor was removed to your user');
+        return $this->redirectToRoute('app_user');
+    }
 
 }
