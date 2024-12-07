@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}categories{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>Categories</h1>
+        <br><br>
+<table class="table">
+    <tr>
+        <th>id</th>
+        <th>Category Name</th>
+        <th>Action</th>
+    </tr>
+    {% for category in categories %}
+        <tr>
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
+            <td>
+                <a href="{{ path('app_category_update',{'id':category.id}) }}">Edit</a> |
+                <a href="{{ path('app_category_delete',{'id':category.id}) }}" class="text-danger">Delete</a>
+            </td>
+        </tr>
+        {% else %}
+        <p>No Categories to display</p>
+    {% endfor %}
+</table>
+        <br>
+        <a class="btn btn-outline-primary" href="{{ path('app_category_new') }}">Add Category</a>
+    </div>
+{% endblock %}
