@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users!{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Users</h1><br><br>
+
+    {% include 'layouts/_flash_messages.html.twig' %}
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>E-mail</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Role</th>
+            <th>Action</th>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.firstName }}</td>
+                <td>
+                    {% if ('ROLE_ADMIN' in user.roles) %}
+                        <span class="text-primary">Administrator</span>
+                    {% elseif ('ROLE_E' in user.roles) %}
+                        <span class="text-success">Editor</span>
+                    {% else %}
+                        <span class="text-secondary">Customer</span>
+                    {% endif %}
+                    {# {% for role in user.roles %}
+                        {{ role }}
+                    {% endfor %}  #}
+                </td>
+                <td>
+                    {% if ('ROLE_ADMIN' in user.roles) == false %}
+                        {% if ('ROLE_EDITOR' in user.roles) == false %}
+                            <a onclick="return confirm('Do you want to add editor role ?')" class="btn btn-outline-primary" href="{{ path('app_user_to_editor',{'id':user.id}) }}">Add editor role</a>
+                        {% else %}
+                            <a onclick="return confirm('Do you want to remove editor role ?')" class="btn btn-danger" href="{{ path('app_user_remove_editor_role',{'id':user.id}) }}">Remove editor role</a>
+                        {% endif %}
+                    <a href="" class="btn btn-danger">Delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
