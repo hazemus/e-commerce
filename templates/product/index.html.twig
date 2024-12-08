@@ -13,6 +13,7 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
+                <th>Stock</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -21,11 +22,13 @@
             <tr>
                 <td>{{ product.id }}</td>
                 <td>{{ product.name }}</td>
-                <td>{{ product.description }}</td>
+                <td>{{ product.description|slice(0,75) }}...</td>
                 <td>{{ product.price }}</td>
+                <td>{{ product.stock }}</td>
                 <td>
                     <a class="btn btn-outline-success" href="{{ path('app_product_show', {'id': product.id}) }}">Show</a>
                     <a class="btn btn-outline-primary" href="{{ path('app_product_edit', {'id': product.id}) }}">Edit</a>
+                    <a class="btn btn-outline-info" href="{{ path('app_product_stock_add', {'id': product.id}) }}">Add Stock</a>
                 </td>
             </tr>
         {% else %}

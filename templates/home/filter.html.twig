@@ -3,22 +3,21 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<div class="container"><br>
-    <h1>Products</h1>
-    <div class="row">
-        {% for product in products %}
+    <div class="container"><br>
+        <h1>{{ subCategory.name }}</h1>
+        <div class="row">
+            {% for product in products %}
                 <div class="col-md-3 mt-4   ">
                     <div class="card" style="width: 18rem;">
-                    <img src="{{ asset('uploads/images/'~product.image) }}" class="card-img-top" alt="..." height="200">
+                        <img src="{{ asset('uploads/images/'~product.image) }}" class="card-img-top" alt="..." height="200">
                         <div class="card-body">
                             <a style="text-decoration: none" href="{{ path('app_home_product_show',{'id':product.id}) }}"><h5 class="card-title">{{ product.name }}</h5></a>
                             <p class="card-text">{{ product.description|slice(0,60) }} ...</p>
-                            <h3>{{ product.price }} TND</h3>
-                            <a href="{{ path('app_cart_new',{'id':product.id}) }}" class="btn btn-outline-success">Add To Cart</a>
+                            <a href="#" class="btn btn-outline-success">Add To Cart</a>
                         </div>
                     </div>
-            </div>
-    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
     </div>
-</div>
 {% endblock %}
